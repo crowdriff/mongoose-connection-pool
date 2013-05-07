@@ -1,0 +1,41 @@
+{
+  "name": "mongoose-connection-pool",
+  "description": "A connection pool for Mongoose",
+  "version": "0.0.1",
+  "author": "Kent English <kent@crowdriff.com>",
+  "contributors": [
+    {
+      "name": "Kent English",
+      "email": "kent@crowdriff.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/crowdriff/mongoose-connection-pool/issues"
+  },
+  "dependencies": {
+    "mongoose": "3.6.x"
+  },
+  "keywords": [
+    "mongoose",
+    "mongodb",
+    "db",
+    "database",
+    "multiple",
+    "connection",
+    "pool"
+  ],
+  "licenses": [
+    {
+      "type": "Apache License, Version 2.0",
+      "url": "http://opensource.org/licenses/Apache-2.0" 
+    } 
+  ],
+  "repository": {
+    "type": "git", 
+    "url": "git://github.com/crowdriff/mongoose-connection-pool"
+  },
+  "main": "./lib/mongoose-connection-pool",
+  "engines": {
+    "node": ">=0.6.19"
+  }
+}
