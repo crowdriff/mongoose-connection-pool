@@ -44,11 +44,19 @@ In file1.js:
 
     var CarFactory = require('./models.js').CarFactory,
       Car = CarFactory('localhost', 'my-garage'),
-      car = new Car();
+      car = new Car({
+        color: 'yellow',
+        doors: 2,
+        horsepower: 25
+      });
 
 In file2.js:
 
     var CarFactory = require('./models.js').CarFactory,
       Car = CarFactory('mongo.example.com', 'another-garage'),
-      car = new Car();
+      car = new Car({
+      	color: 'blue',
+      	doors: 4,
+      	horsepower: 275
+      });
 
