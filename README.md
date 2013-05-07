@@ -1,7 +1,10 @@
 # Mongoose-Connection-Pool
 
 This module allows you to maintain an arbitrary number of changing Mongoose 
-connections. The `getConnection(host, db)` returns a connection to the 
+connections. It was designed for applications in which an unknown number of 
+MongoDB databases contain similar collections. 
+
+The `getConnection(host, db)` returns a connection to the 
 requested host and database if one has already been created, otherwise it 
 creates a new connection and returns that. When instantiating a 
 `ConnectionPool` an options object can be passed in, the defaults for which 
