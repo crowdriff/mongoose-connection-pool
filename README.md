@@ -8,11 +8,11 @@ creates a new connection and returns that. When instantiating a
 are:
 
 ```javascript
-    {
-      poolSize: 5, //The size of Mongoose's internal pool
-      expiryPeriod: 300000, //The number of milliseconds after which a connection expires
-      checkPeriod: 60000 //The frequency with which to check for expired connections
-    }
+{
+  poolSize: 5, //The size of Mongoose's internal pool
+  expiryPeriod: 300000, //The number of milliseconds after which a connection expires
+  checkPeriod: 60000 //The frequency with which to check for expired connections
+}
 ```
 
 ### Example Usage:
@@ -20,52 +20,52 @@ are:
 In db.js:
 
 ```javascript
-    var ConnectionPool = require('mongoose-connection-pool').ConnectionPool;
+var ConnectionPool = require('mongoose-connection-pool').ConnectionPool;
 
-    exports.connectionPool = ConnectionPool({
-      poolSize: 3
-    });
+exports.connectionPool = ConnectionPool({
+  poolSize: 3
+});
 ```
 
 In models.js:
 
 ```javascript
-    var mongoose = require('mongoose'),
-      Schema = mongoose.Schema,
-      connectionPool = require('./db.js').connectionPool;
+var mongoose = require('mongoose'),
+  Schema = mongoose.Schema,
+  connectionPool = require('./db.js').connectionPool;
 
-    var carSchema = new Schema({
-      color: String,
-      doors: Number,
-      horsepower: Number
-    });
+var carSchema = new Schema({
+  color: String,
+  doors: Number,
+  horsepower: Number
+});
 
-    exports.carFactory = function(host, db) {
-      var conn = connectionPool.getConnection(host, db);
-      return conn.model('cars', carSchema);
-    };
+exports.carFactory = function(host, db) {
+  var conn = connectionPool.getConnection(host, db);
+  return conn.model('cars', carSchema);
+};
 ```
 
 In file1.js:
 
 ```javascript
-    var CarFactory = require('./models.js').CarFactory,
-      Car = CarFactory('localhost', 'my-garage'),
-      car = new Car({
-        color: 'yellow',
-        doors: 2,
-        horsepower: 25
-      });
+var CarFactory = require('./models.js').CarFactory,
+Car = CarFactory('localhost', 'my-garage'),
+car = new Car({
+  color: 'yellow',
+  doors: 2,
+  horsepower: 25
+});
 ```
 
 In file2.js:
 
 ```javascript
-    var CarFactory = require('./models.js').CarFactory,
-      Car = CarFactory('mongo.example.com', 'another-garage'),
-      car = new Car({
-      	color: 'blue',
-      	doors: 4,
-      	horsepower: 275
-      });
+var CarFactory = require('./models.js').CarFactory,
+Car = CarFactory('mongo.example.com', 'another-garage'),
+car = new Car({
+	color: 'blue',
+	doors: 4,
+	horsepower: 275
+});
 ```
