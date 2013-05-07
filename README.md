@@ -2,7 +2,9 @@
 
 This module allows you to maintain an arbitrary number of changing Mongoose 
 connections. It was designed for applications in which an unknown number of 
-MongoDB databases contain similar collections. 
+MongoDB databases contain similar collections. In such a case, the application
+cannot define the connections up front but on the other hand it doesn't need
+to keep inactive connections alive indefinitely.
 
 The `getConnection(host, db)` returns a connection to the 
 requested host and database if one has already been created, otherwise it 
